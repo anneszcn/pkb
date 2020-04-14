@@ -225,20 +225,21 @@ struct ListNode* reverse_recurse(struct ListNode *head) {
     return last;
 }
 仅翻转前n个结点（当n>链表长度时会出错）
-struct ListNode* reverseN2(struct ListNode *head, int n,struct ListNode **ppsuccessor) {
+struct ListNode *successor=NULL; //用于保存第n+1个结点
+struct ListNode* reverseN(struct ListNode *head, int n) {
     if (head == NULL) return head;
     if (n < 1) return NULL;
     //if (n > 链表长度) return NULL; 链表长度未知，所以，遗漏了这种情况
 	
     if (n == 1) { 
-        *ppsuccessor = head->next;
+        *successor=head->next;
         return head;
     }
     
-    struct ListNode *temp=NULL,*last = reverseN2(head->next, n - 1,&temp);
+    struct ListNode *last = reverseN(head->next, n - 1);
     head->next->next=head;
-    head->next=temp;
-    *ppsuccessor=temp;
+    head->next=successor;
+    
     return last;
 }
 ```
