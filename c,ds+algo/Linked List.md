@@ -141,6 +141,24 @@ while (tail->next) {
     len++;
     tail=tail->next;
 }
+递归
+struct ListNode* GetTail(struct ListNode *head,int *len)
+{
+    if (head == NULL) {
+	*len=0;
+	return NULL;
+    }
+    if (head->next == NULL) {
+	*len=1;
+	return head;
+    }
+	
+    int tmp;
+    struct ListNode *res=GetTail(head->next,&tmp);
+    *len=tmp+1;
+	
+    return res;
+}
 ```
 ***
 链表逆序（翻转）
@@ -167,6 +185,23 @@ struct ListNode* reverse_recurse(struct ListNode *head) {
     struct ListNode *last = reverse(head->next);
     head->next->next = head;
     head->next = NULL;
+    return last;
+}
+仅翻转前n个结点（当n>链表长度时会出错）
+struct ListNode* reverseN2(struct ListNode *head, int n,struct ListNode **ppsuccessor) {
+    if (head == NULL) return head;
+    if (n < 1) return NULL;
+    //if (n > 链表长度) return NULL; 链表长度未知，所以，遗漏了这种情况
+	
+    if (n == 1) { 
+        *ppsuccessor = head->next;
+        return head;
+    }
+    
+    struct ListNode *temp=NULL,*last = reverseN2(head->next, n - 1,&temp);
+    head->next->next=head;
+    head->next=temp;
+    *ppsuccessor=temp;
     return last;
 }
 ```
