@@ -8,6 +8,7 @@
 - 结点移动  
 - 结点查找
 - 链尾/链表长度（结点个数）  
+- **递归回溯模拟向后指针**  
 - 链表逆序（翻转）  
 - 链表两两翻转  
 </details>
@@ -160,6 +161,41 @@ struct ListNode* GetTail(struct ListNode *head,int *len)
     return res;
 }
 ```
+<details>
+<summary>递归回溯模拟向后指针</summary>
+	
+```c
+int len=0,count=0,k;
+struct ListNode *tail=NULL,Kth=NULL,Kth2=NULL; //Kth2:Kth from the end
+
+void linkedlist(struct ListNode *head)
+{
+    if (head == NULL) {
+        len=0;
+	tail=NULL;
+	
+	Kth=NULL;
+	Kth2=NULL;
+    }
+    
+    count++;
+    if (count == k) Kth=head; //当前结点为第k个
+    
+    linkedlist(head->next);
+    
+    static int flag;
+    if (!flag++) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
+        len=count;
+	tail=head;
+    }
+    /*
+        (1 <= k && k <= len)：k值有效；
+	(count-- == len+1-k)：当前结点为倒数第k个；自减--退后一结点
+    */
+    if ((1 <= k && k <= len) && (count-- == len+1-k)) Kth2=head;
+}
+```
+</details>
 ***
 链表逆序（翻转）
 ```c
