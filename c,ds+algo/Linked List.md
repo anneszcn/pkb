@@ -168,7 +168,7 @@ struct ListNode* GetTail(struct ListNode *head,int *len)
 int len=0,count=0,k;
 struct ListNode *tail=NULL,Kth=NULL,Kth2=NULL; //Kth2:Kth from the end
 
-void linkedlist(struct ListNode *head)
+void afunction(struct ListNode *head)
 {
     if (head == NULL) {
         len=0;
@@ -181,7 +181,7 @@ void linkedlist(struct ListNode *head)
     count++;
     if (count == k) Kth=head; //当前结点为第k个
     
-    linkedlist(head->next);
+    afunction(head->next);
     
     static int flag;
     if (!flag++) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
