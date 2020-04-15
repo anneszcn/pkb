@@ -7,7 +7,8 @@
 - 结点删除  
 - 结点移动  
 - 结点查找
-- 链尾/链表长度（结点个数）  
+- 链尾/链表长度（结点个数） 
+- 中间结点  
 - **递归回溯模拟向后指针**  
 - 链表逆序（翻转）  
 - 链表两两翻转  
@@ -143,6 +144,22 @@ while (tail->next) {
     tail=tail->next;
 }
 ```
+中间结点  
+```c
+struct ListNode* GetMiddle(struct ListNode *head)
+{
+	struct ListNode *p=head,*q=head;
+	
+	while (p && q) {
+		if (p->next && p->next->next) p=p->next->next;
+		else break;
+		
+		q=q->next;
+	}
+	
+	return q;
+}
+```
 <details>
 <summary>递归回溯模拟向后指针</summary>
 	
@@ -177,6 +194,28 @@ void afunction(struct ListNode *head)
     */
     if ((1 <= k && k <= len) && (count-- == len+1-k)) Kth2=head;
 }
+
+（逆序）
+struct ListNode *tail,*pre; //tail表示当前链表的尾，即是逆序链表的头
+void reverse_re2(struct ListNode *head) {
+    if (head == NULL) {
+        tail=head;
+	return;
+    }
+    
+    reverse_re2(head->next);
+    static int flag;
+    if (!flag) {
+        tail=head;
+	pre=tail;
+	flag=1;
+    }
+    else {
+        pre->next=head;
+        pre=head;
+    }
+}
+pre->next=NULL;
 ```
 </details>
 
@@ -207,27 +246,6 @@ struct ListNode* reverse_re(struct ListNode *head) {
     head->next = NULL;
     return last;
 }
-
-struct ListNode *tail,*pre; //tail表示当前链表的尾，即是逆序链表的头
-void reverse_re2(struct ListNode *head) {
-    if (head == NULL) {
-        tail=head;
-	return;
-    }
-    
-    reverse_re2(head->next);
-    static int flag;
-    if (!flag) {
-        tail=head;
-	pre=tail;
-	flag=1;
-    }
-    else {
-        pre->next=head;
-        pre=head;
-    }
-}
-pre->next=NULL;
 仅翻转前n个结点（当n>链表长度时会出错）
 struct ListNode *successor=NULL; //用于保存第n+1个结点
 struct ListNode* reverseN(struct ListNode *head, int n) {
