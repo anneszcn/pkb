@@ -184,9 +184,10 @@ void afunction(struct ListNode *head)
     afunction(head->next);
     
     static int flag;
-    if (!flag++) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
+    if (!flag) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
         len=count;
 	tail=head;
+	flag=1;
     }
     /*
         (1 <= k && k <= len)：k值有效；
@@ -216,7 +217,7 @@ struct ListNode* reverse(struct ListNode* head)
 }
 
 递归
-struct ListNode* reverse_recurse(struct ListNode *head) {
+struct ListNode* reverse_re(struct ListNode *head) {
     if (head == NULL || head->next == NULL) return head;
     
     struct ListNode *last = reverse(head->next);
@@ -224,6 +225,27 @@ struct ListNode* reverse_recurse(struct ListNode *head) {
     head->next = NULL;
     return last;
 }
+
+struct ListNode *tail,*pre; //也就是链表逆序的头
+void reverse_re2(struct ListNode *head) {
+    if (head == NULL) {
+        tail=head;
+	return;
+    }
+    
+    reverse_re2(head->next);
+    static int flag;
+    if (!flag) {
+        tail=head;
+	pre=tail;
+	flag=1;
+    }
+    else {
+        pre->next=head;
+        pre=head;
+    }
+}
+pre->next=NULL;
 仅翻转前n个结点（当n>链表长度时会出错）
 struct ListNode *successor=NULL; //用于保存第n+1个结点
 struct ListNode* reverseN(struct ListNode *head, int n) {
