@@ -142,24 +142,6 @@ while (tail->next) {
     len++;
     tail=tail->next;
 }
-递归
-struct ListNode* GetTail(struct ListNode *head,int *len)
-{
-    if (head == NULL) {
-	*len=0;
-	return NULL;
-    }
-    if (head->next == NULL) {
-	*len=1;
-	return head;
-    }
-	
-    int tmp;
-    struct ListNode *res=GetTail(head->next,&tmp);
-    *len=tmp+1;
-	
-    return res;
-}
 ```
 <details>
 <summary>递归回溯模拟向后指针</summary>
@@ -226,7 +208,7 @@ struct ListNode* reverse_re(struct ListNode *head) {
     return last;
 }
 
-struct ListNode *tail,*pre; //也就是链表逆序的头
+struct ListNode *tail,*pre; //tail表示当前链表的尾，即是逆序链表的头
 void reverse_re2(struct ListNode *head) {
     if (head == NULL) {
         tail=head;
