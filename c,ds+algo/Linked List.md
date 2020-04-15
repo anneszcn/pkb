@@ -148,16 +148,16 @@ while (tail->next) {
 ```c
 struct ListNode* GetMiddle(struct ListNode *head)
 {
-	struct ListNode *p=head,*q=head;
+    struct ListNode *p=head,*q=head;
 	
-	while (p && q) {
-		if (p->next && p->next->next) p=p->next->next;
-		else break;
+    while (p && q) {
+	if (p->next && p->next->next) p=p->next->next;
+	else break;
 		
-		q=q->next;
-	}
+	q=q->next;
+    }
 	
-	return q;
+    return q;
 }
 ```
 <details>
