@@ -146,13 +146,18 @@ while (tail->next) {
 ```
 中间结点  
 ```c
+int flag=-1; //标识链表结点奇偶性
 struct ListNode* GetMiddle(struct ListNode *head)
 {
     struct ListNode *p=head,*q=head;
 	
     while (p && q) {
 	if (p->next && p->next->next) p=p->next->next;
-	else break;
+	else {
+	    if (p->next == NULL) flag=1; //p->next=NULL，奇数
+	    else flag=0;                 //p->next->next=NULL，偶数
+	    break;
+	}
 		
 	q=q->next;
     }
