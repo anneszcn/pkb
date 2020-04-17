@@ -40,6 +40,14 @@ printf("%c\n",*(*pp+1)); //'e'
 二维数组/数组指针  
 ![行指针](https://github.com/anneszcn/pkb/blob/master/c,ds+algo/pic/%E8%A1%8C%E6%8C%87%E9%92%88.png?raw=true)  
 [行指针](https://blog.csdn.net/wan974896411/article/details/51174471)  
+
+- 二维数组int a[ROW][COLUMN]  
+1. 可划分为三层，行指针、列指针、元素；由高层到底层可通过“* ”得到，而有底层到高层可通过“&”得到。
+  |  行指针 (a+i)  ^
+* |  列指针 a[i]   | &
+  V  元素  a[i][j] |
+2. 行指针的本质就是一个指向包括COLUMN个元素的一维数组的指针，即int (* p)[COLUMN]；而列指针就是一个指向元素的指针，即int* p；
+4. 对于一维数组，a[x]=*(a+x)=*(x+a)=x[a]（a[3]==3[a]）对于二维数组，a[i][j]=*(*(a+i)+j)。
 ***
 函数指针  
 - 应用  
