@@ -23,10 +23,11 @@
 字符串常量，编译器会为其分配存储空间，如果 "Hello", 存储在内存中的 0x3000 0x3001 0x3002 0x3003 0x3004 0x3005。  
 s = "Hello"，其实真正的意义是 s ="Hello" = 0x3000，即**字符串常量的本质表现是代表它的第一个字符的地址**。  
 ```c
-char  **s ;
-s = (char **) malloc(sizeof(char**));
-*s =  "hello world";
-printf("%s",*s);
+char  **pp ;
+pp = (char **) malloc(sizeof(char*));
+*pp =  "hello world";
+printf("%s\n",*pp);      //"hello world"
+printf("%c\n",*(*pp+1)); //'e'
 ```
 ***
 二级指针/指针数组  
