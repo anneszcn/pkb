@@ -38,7 +38,8 @@ printf("%c\n",*(*pp+1)); //'e'
 二级指针/指针数组  
 ***
 二维数组/数组指针  
-![行指针]()  
+![行指针](https://github.com/anneszcn/pkb/blob/master/c,ds+algo/pic/%E8%A1%8C%E6%8C%87%E9%92%88.png?raw=true)  
+[行指针](https://blog.csdn.net/wan974896411/article/details/51174471)  
 ***
 函数指针  
 - 应用  
