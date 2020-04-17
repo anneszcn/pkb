@@ -27,24 +27,9 @@
 字符串  
 字符串常量，编译器会为其分配存储空间，如果 "Hello", 存储在内存中的 0x3000 0x3001 0x3002 0x3003 0x3004 0x3005。  
 s = "Hello"，其实真正的意义是 s ="Hello" = 0x3000，即**字符串常量的本质表现是代表它的第一个字符的地址**。  
-```c
-char  **pp ;
-pp = (char **) malloc(sizeof(char*));
-*pp =  "hello world";
-printf("%s\n",*pp);      //"hello world"
-printf("%c\n",*(*pp+1)); //'e'
-```
 ***
 二级指针/指针数组  
 ```c
-//n阶魔方阵  
-int **A,i,n=8;  
-scanf("%d",&n);
-if (n>2) {
-    A=(int**)malloc(sizeof(int*)*n);    //分配n个数组行指针
-    for (i=0;i<n;i++)  
-        A[i]=(int*)malloc(sizeof(int)); //分配行 
-}
 /*     _______
    □->|A[0]  |->{0行n个元素}
    A   |A[1]  |->{1行n个元素}
@@ -55,6 +40,32 @@ if (n>2) {
        --------
    A        
 */
+//n阶魔方阵  
+int **A,i,n=8;  
+scanf("%d",&n);
+if (n>2) {
+    A=(int**)malloc(sizeof(int*)*n);    //分配n个数组行指针
+    for (i=0;i<n;i++)  
+        A[i]=(int*)malloc(sizeof(int)); //分配行 
+}
+
+
+char  **pp ;
+pp = (char **) malloc(sizeof(char*));
+*pp =  "hello world";
+printf("%s\n",*pp);      //"hello world"
+printf("%c\n",*(*pp+1)); //'e'
+
+
+char *weekday[7]={
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday"
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                 }
 ```
 ***
 二维数组/数组指针（行指针）  
