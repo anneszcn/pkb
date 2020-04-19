@@ -134,31 +134,32 @@ struct ListNode *FindKth(struct ListNode *head,int k)
 ***
 链尾/链表长度（结点个数）
 ```c
-struct ListNode *dummyHead=(struct ListNode *)malloc(sizeof(struct ListNode)),head,tail;
-head=dummyHead->next;
-tail=head;
+struct ListNode *p=head;
 int len=0;
+while (p) {
+    len++;
+    p=p->next;
+}
 
+struct ListNode *dummyHead=(struct ListNode *)malloc(sizeof(struct ListNode)),tail;
+head=dummyHead->next;
+tail=dummyHead;
+int len=0;
 while (tail->next) {
     len++;
     tail=tail->next;
 }
+if (head == NULL) tail=head;
+free(dummyHead);dummyHead=NULL;
 ```
 中间结点  
 ```c
-int flag=-1; //标识链表结点奇偶性
 struct ListNode* GetMiddle(struct ListNode *head)
 {
     struct ListNode *p=head,*q=head;
 	
-    while (p && q) {
-	if (p->next && p->next->next) p=p->next->next;
-	else {
-	    if (p->next == NULL) flag=1; //p->next=NULL，奇数
-	    else flag=0;                 //p->next->next=NULL，偶数
-	    break;
-	}
-		
+    while (p && p->next && p->next->next) {
+	p=p->next->next;		
 	q=q->next;
     }
 	
