@@ -170,6 +170,18 @@ struct ListNode* GetMiddle(struct ListNode *head)
 <summary>递归回溯模拟向后指针</summary>
 	
 ```c
+void reverseOutput(struct ListNode *head)
+{
+    if (head == NULL) return;
+    
+    reverseOutput(head->next);
+    
+    static int FirstFlag;
+    
+    printf("%s%d",(FirstFlag++)?" ":"",head->val);
+}
+
+
 int len=0,counter=0,k;
 struct ListNode *tail=NULL,Kth=NULL,Kth2=NULL; //Kth2:Kth from the end
 
@@ -182,11 +194,11 @@ void afunction(struct ListNode *head)
     
     afunction(head->next);
     
-    static int flag;
-    if (!flag) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
+    static int TailFlag;
+    if (!tailFlag) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
         len=counter;
 	tail=head;
-	flag=1;
+	tailFlag=1;
     }
     /*
         (1 <= k && k <= len)：k值有效；
@@ -204,11 +216,11 @@ void reverse_re2(struct ListNode *head) {
     }
     
     reverse_re2(head->next);
-    static int flag;
-    if (!flag) {
+    static int tailFlag;
+    if (!tailFlag) {
         tail=head;
 	pre=tail;
-	flag=1;
+	tailFlag=1;
     }
     else {
         pre->next=head;
