@@ -185,14 +185,14 @@ void reverseOutput(struct ListNode *head)
 int len=0,counter=0,k;
 struct ListNode *tail=NULL,Kth=NULL,Kth2=NULL; //Kth2:Kth from the end
 
-void afunction(struct ListNode *head)
+void RecurBacktrack(struct ListNode *head)
 {
     if (head == NULL) return;
     
     counter++;
     if (counter == k) Kth=head; //当前结点为第k个
     
-    afunction(head->next);
+    RecurBacktrack(head->next);
     
     static int TailFlag;
     if (!tailFlag) {  //此时，当前结点为尾结点；仅执行一次，将链表参数保存起来
@@ -209,13 +209,13 @@ void afunction(struct ListNode *head)
 
 （逆序）
 struct ListNode *tail,*pre; //tail表示当前链表的尾，即是逆序链表的头
-void reverse_re2(struct ListNode *head) {
+void reverse(struct ListNode *head) {
     if (head == NULL) {
         tail=head;
 	return;
     }
     
-    reverse_re2(head->next);
+    reverse(head->next);
     static int tailFlag;
     if (!tailFlag) {
         tail=head;
