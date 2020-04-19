@@ -31,8 +31,8 @@ struct ListNode {
 ```
 ***
 哑结点  
-1.方便对非空链表和空链表统一处理）；  
-2.方便对涉及到第一个结点的操作等特殊情况进行处理，如删除第一个结点等。
+1.方便对非空链表和空链表统一处理；  
+2.方便对涉及到第一个结点特殊操作的处理，如删除、位置改变等。
 ```c
 struct ListNode *dummyHead=(struct ListNode *)malloc(sizeof(struct ListNode));dummyHead->next=head;
 ...
