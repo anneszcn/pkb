@@ -142,7 +142,7 @@ while (p) {
 }
 
 struct ListNode *dummyHead=(struct ListNode *)malloc(sizeof(struct ListNode)),tail;
-head=dummyHead->next;
+dummyHead->next=head;
 tail=dummyHead;
 int len=0;
 while (tail->next) {
