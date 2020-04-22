@@ -154,7 +154,7 @@ free(dummyHead);dummyHead=NULL;
 ```
 中间结点  
 ```c
-struct ListNode* GetMiddle(struct ListNode *head)
+struct ListNode* GetMiddle(struct ListNode *head) //若总结点为偶数，返回中间偏前的
 {
     struct ListNode *p=head,*q=head;
 	
@@ -163,6 +163,17 @@ struct ListNode* GetMiddle(struct ListNode *head)
 	q=q->next;
     }
 	
+    return q;
+}
+
+struct ListNode* GetMiddleNode(struct ListNode* head) //若总结点为偶数，返回中间偏后的
+{
+    struct ListNode *p=head,*q=head;
+    while (p && p->next) {
+        p=p->next->next;
+    	q=q->next;
+    }
+
     return q;
 }
 ```
