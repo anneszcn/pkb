@@ -210,10 +210,14 @@ void RecurBacktrack(struct ListNode *head)
         len=counter;
 	tail=head;
 	tailFlag=1;
+	
+	if (k==1) Kth2=head;
+
+        return;
     }
     /*
         (1 <= k && k <= len)：k值有效；
-	(count-- == len+1-k)：当前结点为倒数第k个；自减--退后一结点
+	(counter-- == len+1-k)：当前结点为倒数第k个；自减--退后一结点
     */
     if ((1 <= k && k <= len) && (counter-- == len+1-k)) Kth2=head;
 }
