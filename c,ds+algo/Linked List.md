@@ -194,14 +194,19 @@ void reverseOutput(struct ListNode *head)
 
 
 int len=0,counter=0,k;
+int phead=NULL;
 struct ListNode *tail=NULL,Kth=NULL,Kth2=NULL; //Kth2:Kth from the end
 
 void RecurBacktrack(struct ListNode *head)
 {
-    if (head == NULL) return;
+    if (head == NULL) {
+        Kth2=NULL;
+        return;
+    }
+    static int HeadFlag;
+    if (!HeadFlag) phead=head;
     
-    counter++;
-    if (counter == k) Kth=head; //当前结点为第k个
+    if (++counter == k) Kth=head; //当前结点为第k个
     
     RecurBacktrack(head->next);
     
@@ -215,13 +220,25 @@ void RecurBacktrack(struct ListNode *head)
 
         return;
     }
-    /*
-        (1 <= k && k <= len)：k值有效；
-	(counter-- == len+1-k)：当前结点为倒数第k个；自减--退后一结点
+    if ((1 <= k && k <= len) && (--counter == len+1-k)) Kth2=head;
+    /*  delete Kth2
+        if ((1 <= k && k < len) && (--counter == len+1-(k+1))) { /* 如果倒数第k结点不是是第一个结点 */
+	    struct ListNode *q;
+	    q=head;
+	    head=head->next;
+	    free(q); 
+	}
     */
-    if ((1 <= k && k <= len) && (counter-- == len+1-k)) Kth2=head;
 }
-
+/* delete Kth2
+    if (k==len) {   /* 倒数第k结点正好是第一个结点 */
+        struct ListNode *q;
+	q=head;
+	head=head->next;
+	free(q);     
+    } 
+*/
+       
 （逆序）
 struct ListNode *tail,*pre; //tail表示当前链表的尾，即是逆序链表的头
 void reverse(struct ListNode *head) {
