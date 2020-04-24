@@ -1,4 +1,12 @@
 [只出现一次的两个数](https://blog.csdn.net/dingzhenzha7040/article/details/101188947)  
+程序逻辑(programm logic)、算法逻辑(algorithm logic)  
+重复执行类型算法——循环(loop)、递归(recursive)、递推(recurrence)、迭代(iterate)、遍历(traversal)等  
+Programs =  Algorithms + Data Structures  
+Algorithm = Logic + Control  
+Program = Logic + Control + Data Structure  
+有效地分离 Logic、Control 和 Data 是写出好程序的关键所在！  
+逻辑是事物自此及彼的合乎事物发展规律；指令是逻辑的具体实现形式； 程序是一系列有序执行的指令集合；将指令集合组织成可靠可用可信赖的软件（美妙的逻辑之塔）。  
+最重要的是掌握编程思想。  
 ***
 常数
 | |值|
