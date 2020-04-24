@@ -1,6 +1,4 @@
-c语言、数据结构、算法
-c++、汇编语言
-OA高级功能
+[只出现一次的两个数](https://blog.csdn.net/dingzhenzha7040/article/details/101188947)  
 ***
 常数
 | |值|
