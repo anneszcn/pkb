@@ -12,6 +12,12 @@ Program = Logic + Control + Data Structure
 printf("%d\n",1);      //1  
 printf("%d\n",1^2);    //3  
 printf("%d\n",1^2^3);  //0  
+a^0=a  
+a^a=0  
+
+位运算  
+x & (x-1)：去掉最右边的1  
+x & (-x)： 仅保留最右边的1，其余置0：x为奇数事结果为1；x为偶数时结果为能整除x的最大2次幂  
 ***
 常数
 | |值|
