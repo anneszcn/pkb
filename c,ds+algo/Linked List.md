@@ -222,7 +222,7 @@ void RecurBacktrack(struct ListNode *head)
     }
     if ((1 <= k && k <= len) && (--counter == len+1-k)) Kth2=head;
     /*  delete Kth2
-        if ((1 <= k && k < len) && (--counter == len+1-(k+1))) { /* 如果倒数第k结点不是是第一个结点 */
+        if ((1 <= k && k < len) && (--counter == len+1-(k+1))) { // 如果倒数第k结点不是是第一个结点
 	    struct ListNode *q;
 	    q=head;
 	    head=head->next;
@@ -231,7 +231,7 @@ void RecurBacktrack(struct ListNode *head)
     */
 }
 /* delete Kth2
-    if (k==len) {   /* 倒数第k结点正好是第一个结点 */
+    if (k==len) {   // 倒数第k结点正好是第一个结点
         struct ListNode *q;
 	q=head;
 	head=head->next;
