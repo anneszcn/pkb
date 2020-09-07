@@ -36,9 +36,9 @@ char *pChr=(char*)malloc(sizeof(char)*0);
 当**长度=0**时，申请成功且非NULL，但内容为垃圾。  
 
 ```c
-malloc：未初始化
-calloc：初始化为0
-memset：
+malloc：void *malloc(size_t size)，size -- 内存块的大小，以字节为单位；未初始化
+calloc：void *calloc(size_t nitems, size_t size)，nitems -- 要被分配的元素个数，size -- 元素的大小；初始化为0
+memset：void *memset(void *str, int c, size_t n)，c -- 要被设置的值。该值以 int 形式传递，但是函数在填充内存块时是使用该值的无符号字符形式。
 memcpy：
 memmove：
 strcpy：
