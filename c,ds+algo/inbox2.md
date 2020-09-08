@@ -1,3 +1,18 @@
+```c
+!!!重定向：从文件读入数据（而不从键盘读入数据） 
+freopen("in.txt", "r", stdin);          输入重定向 表示：此后scanf函数从文件"in.txt"读入数据（而不从键盘读入数据）
+freopen("Debug\\out.txt", "w", stdout); 输出重定向
+...
+//fclose(stdin); 
+//fclose(stdout);
+freopen("CON", "r", stdin);             切换为标准输入（重定向到控制台） 
+freopen("CON", "w", stdout);            切换为标准输出（重定向到控制台）  
+```
+清空输入缓冲区  
+char ch;  
+while ((ch = getchar()) != '\n' && ch != EOF); //!!!  
+或  
+fflush(stdio);   
 宏
 ```c
 #define CLEARBUFFER { \
@@ -8,6 +23,11 @@ while ((ch = getchar()) != '\n' && ch != EOF); \
 #define ADDBINARYSUM(a,b,c) ((a)^(b)^(c))
 #define ADDBINARYCARRY(a,b,c) ((a)&(c) | (b)&(c) | (a)&(b))
 ```
+
+【随机函数】  
+由种子所决定的确定序列，是伪随机的   
+srand()与rand()配对使用；所需头文件为：<stdlib.h>   
+取编译时间为种子，则srand(time(0))，还需头文件：<time.h>  
 
 异或  
 printf("%d\n",1);      //1  
