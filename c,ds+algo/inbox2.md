@@ -75,7 +75,7 @@ char *pChr=(char*)malloc(sizeof(char)*0);
 malloc：void *malloc(size_t size)，size -- 内存块的大小，以字节为单位；未初始化
 calloc：void *calloc(size_t nitems, size_t size)，nitems -- 要被分配的元素个数，size -- 元素的大小；**初始化为0**
 realloc:void *realloc(void *ptr, size_t size)，ptr指向此前malloc、calloc 或 realloc 分配内存块，如果为NULL，此时等同malloc、calloc；size -- 内存块的新的大小，以字节为单位。如果大小为 0，且 ptr 指向一个已存在的内存块，此时等同free
-memset：void *memset(void *str, int c, size_t n)，c -- 要被设置的值。该值以 int 形式传递，但是函数在填充内存块时是使用该值的无符号字符形式。
+memset：void *memset(void *str, int c, size_t n)，c -- 要被设置的值。该值以 int 形式传递，但是函数在填充内存块时是使用该值的无符号字符形式；按照字节（无符号数，ASCII码）进行初始化元素；对[整型数组初始化为0或-1](https://blog.csdn.net/wakeupwakeup/article/details/50514801?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight)  
 以下均为内存拷贝，当区域重叠时，第一个结果可能不正确，第二个正确；但，目前，很多编译器做了优化，两者结果相同均正确。
 memcpy：void *memcpy(void *dst, const void *src, size_t count);
 memmove：void *memmove(void *dst, const void *src, size_t count);
