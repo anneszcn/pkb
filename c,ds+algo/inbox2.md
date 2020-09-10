@@ -1,3 +1,6 @@
+[线性递推关系与矩阵乘法](https://www.cnblogs.com/yuyixingkong/p/4343138.html)  
+[漫画：什么是动态规划？](https://mp.weixin.qq.com/s/3h9iqU4rdH3EIy5m6AzXsg)  
+
 ```c
 !!!重定向：从文件读入数据（而不从键盘读入数据） 
 freopen("in.txt", "r", stdin);          输入重定向 表示：此后scanf函数从文件"in.txt"读入数据（而不从键盘读入数据）
