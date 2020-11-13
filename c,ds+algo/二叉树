@@ -1,0 +1,25 @@
+<details>
+<summary>目录</summary>
+	
+- 结点定义  
+- 分层遍历   
+</details>
+
+***
+结点定义
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+};
+```
+***
